@@ -17,6 +17,9 @@ class userController extends Controller
     }
 
     public function doRegister(Request $request){
+        $messages = [
+            'email.required' => 'gmail khong duoc de trong',
+        ];
         $validated = $request->validate([
             'firstName' => 'required|string|max:30',
             'lastName' => 'required|string|max:20',
@@ -24,15 +27,17 @@ class userController extends Controller
             'phoneNumber' => 'required|string|max:20|min:10',
             'password' => 'required|string|max:100|min:8',
             'rePassword' => 'required|same:password|string|min:8|max:100',
-        ]);
+        ],$messages);
 
         $user = new user;
+        $user->createUser($request->email,$request->firstName,$request->lastName,$request->phoneNumber,hash::make($request->password));
+/*         $user = new user;
         $user->gmail = $request->email;
         $user->first_name = $request->firstName;
         $user->last_name = $request->lastName;
         $user->phone_number = $request->phoneNumber;
         $user->password = hash::make($request->password);
-        $user->save();
+        $user->save(); */
         
         return view("pages.login");
         
@@ -43,7 +48,8 @@ class userController extends Controller
             'password' => 'required|string|max:100|min:8',
         ]);
         $user = new user;
-        $user = user::where('gmail', '=', $request->email)->first();
+        /* $user = user::where('gmail', '=', $request->email)->first(); */
+        $user = $user->getUserByGmail($request->email);
         if($user !=null)
         {
             $username = $user->first_name.$user->last_name;
@@ -62,7 +68,6 @@ class userController extends Controller
     public function doLogout(Request $request){
         $request->session()->forget('username');
         $request->session()->forget('gmail');
-        return view("pages.index");
-        
+        return view("pages.login");
     }
 }
