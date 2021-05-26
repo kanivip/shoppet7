@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\user;
+use App\Rules\PhoneNumber;
 
 class userController extends Controller
 {
@@ -20,8 +21,8 @@ class userController extends Controller
         $validated = $request->validate([
             'firstName' => 'required|string|max:30',
             'lastName' => 'required|string|max:20',
-            'email' => 'required|email:rfc,dns|max:255|unique:user,gmail',
-            'phoneNumber' => 'required|string|max:20|min:10',
+            'email' => 'required|email:rfc,dns|max:255|unique:users,gmail',
+            'phoneNumber' => ['required','numeric','digits:10',new PhoneNumber],
             'password' => 'required|string|max:100|min:8',
             'rePassword' => 'required|same:password|string|min:8|max:100',
         ]);
