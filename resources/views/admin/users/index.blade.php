@@ -49,6 +49,7 @@
                                                 class="ni ni-settings text-primary"></i></button>
                                     </form>
                                 </td>
+
                             </tr>
                             @endforeach
                         </tbody>
