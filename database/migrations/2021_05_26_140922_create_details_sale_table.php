@@ -29,6 +29,7 @@ class CreateDetailsSaleTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('details_sale');
     }
 }

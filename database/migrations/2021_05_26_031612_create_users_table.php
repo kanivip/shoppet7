@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id');
+            $table->foreignId('role_id')->default('1');
             $table->string('gmail','70')->unique();
             $table->string('password','100');
             $table->string('first_name','50');
@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('users');
     }
 }
