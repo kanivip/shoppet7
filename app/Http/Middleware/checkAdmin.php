@@ -18,7 +18,7 @@ class checkAdmin
         
         $users = new user;
         $user = user::where('id', '=', $request->session()->get('id_user'))->first();
-        if(isset($user->type_id) && $user->type_id == 2)
+        if(isset($user->role_id) && $user->role_id == 2)
             return $next($request);
             else
             return redirect('/');

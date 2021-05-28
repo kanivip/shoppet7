@@ -51,7 +51,7 @@ class userController extends Controller
         $user = new user;
         /* $user = user::where('gmail', '=', $request->email)->first(); */
         $user = $user->getUserByGmail($request->email);
-        if($user !=null)
+        if($user != null)
         {
             $username = $user->first_name.$user->last_name;
             if(Hash::check($request->password, $user->password)){

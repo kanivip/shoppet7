@@ -5,6 +5,9 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
+            <div>
+            <a href="{{route('admin.users.showAdd')}}" class="btn btn-sm btn-neutral">New User</a>
+            </div>
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
@@ -12,6 +15,12 @@
                         </div>
                     </div>
                 </div>
+                @if(Session::has('error'))
+                    <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                @endif
+                @if(Session::has('success'))
+                    <p class="alert alert-danger">{{ Session::get('success') }}</p>
+                @endif
                 <div class="table-responsive">
                     <!-- Projects table -->
                     <table class="table align-items-center table-flush">
@@ -21,6 +30,9 @@
                                 <th scope="col">Họ</th>
                                 <th scope="col">Tên</th>
                                 <th scope="col">Số điện thoại</th>
+                                
+                                <th scope="col">Ngày thêm</th>
+                                <th scope="col">Ngày chỉnh sửa</th>
                                 <th scope="col">Chỉnh sửa</th>
                             </tr>
                         </thead>
@@ -43,12 +55,27 @@
                                     {{ $user->phone_number }}
                                 </td>
                                 <td>
-                                    <form method="post" action="{{ route('admin.users.showEdit',$user->id) }}">
-                                        @csrf
-                                        <button type="submit" class="btn "><i
-                                                class="ni ni-settings text-primary"></i></button>
-                                    </form>
+                                    {{ $user->created_at }}
                                 </td>
+                                <td>
+                                    {{ $user->updated_at }}
+                                </td>
+                                <td>
+                                    <div class="d-inline-flex">
+                                        <form method="post" action="{{ route('admin.users.showEdit',$user->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn "><i
+                                                    class="ni ni-settings text-primary"></i></button>
+                                        </form>
+
+                                        <form onsubmit="return confirm('Do you really want to delete this?');" method="post" action="{{ route('admin.user.doDelete',$user->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn "><i
+                                                    class="ni ni-fat-remove text-primary"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+
 
                             </tr>
                             @endforeach

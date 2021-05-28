@@ -30,7 +30,10 @@ Route::group(['middleware'=>['admin']],function(){
         return view('admin.dashbroad');
     })->name('admin');
     Route::get('/usersManagement', [usersManagementController::class,'showIndex'])->name('admin.users');
+    Route::get('/userShowAdd', [usersManagementController::class,'showAdd'])->name('admin.users.showAdd');
+    Route::post('/userdoAdd', [usersManagementController::class,'doAdd'])->name('admin.users.doAdd');
     Route::any('/userEdit/{id}', [usersManagementController::class,'showEdit'])->name('admin.users.showEdit');
     Route::post('/userUpdate/{id}', [usersManagementController::class,'doUpdate'])->name('admin.user.doUpdate');
+    Route::post('/userDelete/{id}', [usersManagementController::class,'doDelete'])->name('admin.user.doDelete');
 });
     
