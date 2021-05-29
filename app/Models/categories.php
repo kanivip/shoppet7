@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class categories extends Model
@@ -15,13 +16,17 @@ class categories extends Model
     }
 
     public function getAll(){
-        $categories = $this->parentCategory()->paginate(2);
+        $categories = /* DB::table('categories')
+        ->leftJoin('parent_categories', 'parent_categories.id', '=', 'categories.parent_id')
+        ->get('parent_categories.name'); */
+        categories::all();
+
         return  $categories;
     }
 
     public function parentCategory()
     {
-        return $this->belongsTo(parentCategaries::class);
+        return $this->belongsTo(parentCategaries::class,'parent_id','id');
     }
 
 }

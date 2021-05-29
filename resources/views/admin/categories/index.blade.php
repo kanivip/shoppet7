@@ -39,16 +39,20 @@
 
                         <tbody>
                             
-                        @foreach ($parentcategories as $parentCategory)
+                        @foreach ($parentCategories as $Category)
                             <tr>
                                 <td>
-                                    {{ $parentCategory->name }}
+                                    {{ $Category->name }}
                                 </td>
                                 <td>
-                                    {{ $parentCategory->created_at }}
+                                    {{ $Category->parentCategory['name'] }}
                                 </td>
                                 <td>
-                                    {{ $parentCategory->updated_at }}
+                                    {{ $Category->created_at }}
+                                </td>
+								
+                                <td>
+                                    {{ $Category->updated_at }}
                                 </td>
                                 <td>
                                     <div class="d-inline-flex">
@@ -73,7 +77,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="d-flex justify-content-end">{{ $parentcategories->links() }}</div>
+                {{-- <div class="d-flex justify-content-end">{{ $parentCategories->links() }}</div> --}}
             </div>
         </div>
 

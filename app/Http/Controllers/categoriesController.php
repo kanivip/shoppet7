@@ -19,10 +19,9 @@ class categoriesController extends Controller
         $parentcategories = $parentcategories->getAll();
         return view('admin.categories.index',compact('parentcategories')); */
 
-        $categories = new categories;
-        $categories = $categories->getAll();
-        dd($categories);
-        return view('admin.categories.index',compact('parentcategories'));
+        $parentCategories = new categories;
+        $parentCategories = $parentCategories->getAll();
+        return view('admin.categories.index',compact('parentCategories'));
         //
     }
 
