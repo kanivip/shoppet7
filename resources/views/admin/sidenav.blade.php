@@ -24,6 +24,13 @@
                             <span class="nav-link-text">Users Management</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.categories.index')}}">
+
+                            <i class="ni ni-single-02 text-orange"></i>
+                            <span class="nav-link-text">Categories</span>
+                        </a>
+                    </li>
 
                 </ul>
                 <!-- Divider -->
