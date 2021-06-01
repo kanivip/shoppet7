@@ -39,7 +39,7 @@ class usersManagementController extends Controller
         }else{
             request()->session()->flash('error',"Đã có lỗi xảy ra hãy thử lại sau");
         }
-        return redirect()->route('admin.users');;
+        return redirect()->route('admin.users');
     }
 
     public function doUpdate($id,Request $request)

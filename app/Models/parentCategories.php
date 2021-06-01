@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class parentCategaries extends Model
+class parentCategories extends Model
 {
     protected $table = 'parent_categories';
 
@@ -18,18 +18,27 @@ class parentCategaries extends Model
         return $this->save();
     }
 
+    public function getParentCategory($id){
+        return $this->find($id);
+    }
+
+    public function destroyParentCategory($id){
+        $parentCategory = $this->find($id);
+        return $parentCategory->delete();
+    }
+
     public function getAllWithCategories(){
-        $parentCategaries = parentCategaries::with('categories')->paginate(2);;
-        return  $parentCategaries;
+        $parentCategories = parentCategories::with('categories')->paginate(2);;
+        return  $parentCategories;
     }
 
     public function getAll(){
-        $categories = parentCategaries::paginate(2);;
+        $categories = parentCategories::all();;
         return  $categories;
     }
 
     public function getAllNoPaginate(){
-        $categories = parentCategaries::all();;
+        $categories = parentCategories::all();;
         return  $categories;
     }
 

@@ -42,5 +42,11 @@ Route::group(['middleware'=>'admin','prefix'=>'admin'],function(){
     Route::get('/categories/createChild', [categoriesController::class,'createChild'])->name('admin.categories.createChild');
     Route::post('/categories/store', [categoriesController::class,'store'])->name('admin.categories.store');
     Route::post('/categories/storeChild', [categoriesController::class,'storeChild'])->name('admin.categories.storeChild');
+    Route::any('/categories/editChild/{id}', [categoriesController::class,'editChild'])->name('admin.categories.editChild');
+    Route::post('/categories/updateChild/{id}', [categoriesController::class,'updateChild'])->name('admin.categories.updateChild');
+    Route::post('/categories/destroyChild/{id}', [categoriesController::class,'destroyChild'])->name('admin.categories.destroyChild');
+    Route::post('/categories/destroy/{id}', [categoriesController::class,'destroy'])->name('admin.categories.destroy');
+    Route::get('/categories/edit/{id}', [categoriesController::class,'edit'])->name('admin.categories.edit');
+    
 });
     

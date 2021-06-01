@@ -32,6 +32,7 @@
         type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
+
     <link rel="stylesheet" href="{{asset('admin/assets/css/argon.css?v=1.2.0')}}" type="text/css">
 </head>
 
@@ -292,7 +293,9 @@
 
         <!-- Page content -->
         @yield('page')
+        
     </div>
+    
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{asset('admin/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
@@ -305,6 +308,9 @@
     <script src="{{asset('admin/assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
     <!-- Argon JS -->
     <script src="{{asset('admin/assets/js/argon.js?v=1.2.0')}}"></script>
+    
+
 </body>
+
 
 </html>

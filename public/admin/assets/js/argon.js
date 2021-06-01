@@ -1086,3 +1086,7 @@ var Scrollbar = (function() {
 	}
 
 })();
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
